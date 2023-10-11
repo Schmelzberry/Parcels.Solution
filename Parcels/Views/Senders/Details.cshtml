@@ -1,0 +1,31 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Parcels.Models.Sender;
+@using Parcels.Models;
+@using System.Collections.Generic;
+
+<h1>Sender Details</h1>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<h4>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</h4>
+
+@if(@Model.Packages.Count == 0)
+{
+  <p>This sender does not have any registered packages.</p>
+}
+else
+{
+  <h4>This sender has the following packages:</h4>
+  <ul>
+    @foreach(Package entry in Model.Packages)
+    {
+      <li>@entry.PackageId : @entry.Description</li>
+    }
+  </ul>
+}
+<p>@Html.ActionLink("Back to list of senders", "Index")</p>
+<p>@Html.ActionLink("Edit sender details", "Edit", new { id = Model.SenderId})</p>
+<p>@Html.ActionLink("Delete sender", "Delete", new { id = Model.SenderId})</p>
+<p>@Html.ActionLink("Add new package", "Create", "Packages")</p>

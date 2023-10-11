@@ -34,5 +34,38 @@ namespace Parcels.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+    public ActionResult Details(int id)
+    {
+      Sender targetSender = _db.Senders
+                                .Include(senderToView => senderToView.Packages)
+                                .FirstOrDefault(senderToView => senderToView.SenderId == id);
+      return View(targetSender);
+    }
+    public ActionResult Edit(int id)
+    {
+      Sender targetSender = _db.Senders.FirstOrDefault(senderToEdit => senderToEdit.SenderId == id);
+      return View(targetSender);
+    }
+    [HttpPost]
+    public ActionResult Edit(Sender sender)
+    {
+      _db.Senders.Update(sender);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+      Sender targetSender = _db.Senders.FirstOrDefault(senderToDelete => senderToDelete.SenderId == id);
+      return View(targetSender);
+    }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Sender targetSender = _db.Senders.FirstOrDefault(senderToDelete => senderToDelete.SenderId == id);
+      _db.Senders.Remove(targetSender);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
-}n
+}

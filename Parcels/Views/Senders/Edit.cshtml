@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Parcels.Models.Sender
+
+<h4>Edit Sender</h4>
+
+<p>Update a sender's details: @Html.DisplayFor(sender => sender.Name)</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(sender => sender.SenderId)
+  <br/>
+  @Html.LabelFor(sender => sender.Name)
+  @Html.EditorFor(sender => sender.Name)
+  <br />
+  @Html.LabelFor(sender => sender.Address)
+  @Html.EditorFor(sender => sender.Address)
+
+  <input type="submit" value="Save Changes" class="btn btn-primary" />
+}
+
+<p>@Html.ActionLink("Back to Senders", "Index")</p>
