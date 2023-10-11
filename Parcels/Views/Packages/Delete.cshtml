@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Parcels.Models.Package
+
+<h2>Confirm Delete?</h2>
+
+@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" class="btn btn-danger" />
+}
+
+<p>@Html.ActionLink("Back to Packages", "Index")</p>

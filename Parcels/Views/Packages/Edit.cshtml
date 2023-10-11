@@ -1,0 +1,50 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Parcels.Models.Package
+
+<h4>Edit a package</h4>
+
+<p>Edit a package's details: @Html.DisplayFor(entry => entry.Description)</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(entry => entry.PackageId)
+  @Html.LabelFor(entry => entry.Description)
+  @Html.EditorFor(entry => entry.Description)
+  <br/>
+  @Html.LabelFor(entry => entry.Height)
+  @Html.EditorFor(entry => entry.Height)
+  <br/>  
+  @Html.LabelFor(entry => entry.Length)
+  @Html.EditorFor(entry => entry.Length)
+  <br/>
+  @Html.LabelFor(entry => entry.Weight)
+  @Html.EditorFor(entry => entry.Weight)
+  <br/>
+  @Html.LabelFor(entry => entry.Width)
+  @Html.EditorFor(entry => entry.Width)
+  <br/>
+
+  <input type="submit" value="Save" class="btn btn-primary" />
+}
+  <p>@Html.ActionLink("Back to packages", "Index")</p>
+  
+  
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+  
+

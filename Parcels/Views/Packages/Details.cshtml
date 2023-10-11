@@ -5,9 +5,11 @@
 @model Parcels.Models.Package;
 
 <p>@Html.DisplayNameFor(package => package.Description): @Html.DisplayFor(package => package.Description)</p>
-<p>@Html.DisplayNameFor(package => package.Weight) : @Html.DisplayFor(package => package.Weight)</p>
 <p>@Html.DisplayNameFor(package => package.Height): @Html.DisplayFor(package => package.Height)</p>
 <p>@Html.DisplayNameFor(package => package.Length): @Html.DisplayFor(package => package.Length)</p>
+<p>@Html.DisplayNameFor(package => package.Weight) : @Html.DisplayFor(package => package.Weight)</p>
 <p>@Html.DisplayNameFor(package => package.Width): @Html.DisplayFor(package => package.Width)</p>
 
-@Html.ActionLink("Bring me home", "Index")
+<p>@Html.ActionLink("Bring me Home", "Index")</p>
+<p>@Html.ActionLink("Edit a Package", "Edit", new { id = Model.PackageId })</p>
+<p>@Html.ActionLink("Delete a Package", "Delete", new { id = Model.PackageId })</p>
