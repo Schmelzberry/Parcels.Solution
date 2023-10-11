@@ -15,5 +15,24 @@ namespace Parcels.Controllers
     {
       _db = db;
     }
+
+    public ActionResult Index()
+    {
+      List<Sender> allSenders = _db.Senders.ToList();
+      return View(allSenders);
+    }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Sender newSender)
+    {
+      _db.Senders.Add(newSender);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
-}
+}n
