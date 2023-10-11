@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using DoctorsOffice.Models;
+using Parcels.Models;
 
 namespace Parcels
 {
