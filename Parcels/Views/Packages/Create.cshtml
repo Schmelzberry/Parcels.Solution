@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Add a Package</h1>
+<p>Fill out the form below and hit submit.</p>
+<hr/>
+
+@model Parcels.Models.Package
+<div class="container">
+@using (Html.BeginForm())
+{
+  <h4>@Html.LabelFor(model => model.Description)</h4>
+  @Html.TextBoxFor(model => model.Description, new { placeholder="Enter Description" })
+  <br />
+  <h4>@Html.LabelFor(model => model.Weight)</h4>
+  @Html.TextBoxFor(model => model.Weight, new { placeholder="Enter Weight", value="10" })
+  <br />
+  <h4>@Html.LabelFor(model => model.Height)</h4>
+  @Html.TextBoxFor(model => model.Height, new { placeholder="Enter Height", value="20" })
+  <br />
+  <h4>@Html.LabelFor(model => model.Length)</h4>
+  @Html.TextBoxFor(model => model.Length, new { placeholder="Enter Length", value="25" })
+  <br />
+  <h4>@Html.LabelFor(model => model.Width)</h4>
+  @Html.TextBoxFor(model => model.Width, new { placeholder="Enter Width", value="25" })
+  <br />
+  
+  <input type="submit" value="Add to Database"/>
+}
+</div>
+<br />
+<div class="container">
+<p>@Html.ActionLink("Back to Packages List", "Index")</p>
+</div>
