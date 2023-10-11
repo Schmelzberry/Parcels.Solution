@@ -12,24 +12,29 @@
 {
   <h4>@Html.LabelFor(model => model.Description)</h4>
   @Html.TextBoxFor(model => model.Description, new { placeholder="Enter Description" })
+  @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
   <br />
   <h4>@Html.LabelFor(model => model.Height)</h4>
   @Html.TextBoxFor(model => model.Height, new { placeholder="Enter Height" })
+  @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
   <br />
   <h4>@Html.LabelFor(model => model.Length)</h4>
   @Html.TextBoxFor(model => model.Length, new { placeholder="Enter Length" })
+  @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
   <br />
   <h4>@Html.LabelFor(model => model.Weight)</h4>
   @Html.TextBoxFor(model => model.Weight, new { placeholder="Enter Weight" })
+  @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
   <br />
   <h4>@Html.LabelFor(model => model.Width)</h4>
   @Html.TextBoxFor(model => model.Width, new { placeholder="Enter Width" })
+  @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
   <br />
   
-  <input type="submit" value="Add to Database"/>
+  <input type="submit" value="Add Package"/>
 }
 </div>
 <br />
 <div class="container">
-  <p>@Html.ActionLink("Back to Packages List", "Index")</p>
+  <p>@Html.ActionLink("Back to Packages", "Index")</p>
 </div>

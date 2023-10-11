@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parcels.Models;
 
@@ -10,9 +11,10 @@ using Parcels.Models;
 namespace Parcels.Migrations
 {
     [DbContext(typeof(ParcelsContext))]
-    partial class ParcelsContextModelSnapshot : ModelSnapshot
+    [Migration("20231011220812_AllowNullableTypeInPackage")]
+    partial class AllowNullableTypeInPackage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

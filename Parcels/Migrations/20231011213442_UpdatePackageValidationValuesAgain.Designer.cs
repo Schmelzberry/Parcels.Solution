@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Parcels.Models;
 
@@ -10,9 +11,10 @@ using Parcels.Models;
 namespace Parcels.Migrations
 {
     [DbContext(typeof(ParcelsContext))]
-    partial class ParcelsContextModelSnapshot : ModelSnapshot
+    [Migration("20231011213442_UpdatePackageValidationValuesAgain")]
+    partial class UpdatePackageValidationValuesAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,19 +32,15 @@ namespace Parcels.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<int?>("Height")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("Length")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("Weight")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int?>("Width")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.HasKey("PackageId");

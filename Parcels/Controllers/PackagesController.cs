@@ -29,15 +29,21 @@ namespace Parcels.Controllers
     [HttpPost]
     public ActionResult Create(Package entry) 
     {
-      entry.Description = "This is a placeholder description";
-      entry.Weight = 10;
-      entry.Height = 10;
-      entry.Length = 20;
-      entry.Width = 25;
-      _db.Packages.Add(entry);
-      _db.SaveChanges();
-
-      return RedirectToAction("Index");
+      if (!ModelState.IsValid)
+      {
+        return View(entry);
+      }
+      else
+      {
+        entry.Description = "This is a placeholder description.";
+        entry.Weight = 10;
+        entry.Height = 10;
+        entry.Length = 20;
+        entry.Width = 25;
+        _db.Packages.Add(entry);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
