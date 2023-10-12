@@ -25,6 +25,6 @@ namespace Parcels.Models
     // Connections to Other Models
     public int SenderId { get; set; }
     public Sender Sender { get; set; }
-    // public List <PackageTag> JoinEntities { get; }
+    public List<PackageTag> JoinEntities { get; }
   }
 }

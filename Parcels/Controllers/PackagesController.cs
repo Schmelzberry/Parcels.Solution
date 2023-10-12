@@ -51,6 +51,8 @@ namespace Parcels.Controllers
     {
       Package thisPackage = _db.Packages
                                .Include(packageToView => packageToView.Sender)
+                               .Include(packageToView => packageToView.JoinEntities)
+                               .ThenInclude(establishRelationship => establishRelationship.Tag)
                                .FirstOrDefault(package => package.PackageId == id);
       return View(thisPackage);
     }

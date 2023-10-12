@@ -33,12 +33,14 @@ namespace Parcels.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
     public ActionResult AddPackage(int id)
     {
       Tag tagToAddToPackage = _db.Tags.FirstOrDefault(databaseTags => databaseTags.TagId == id);
       ViewBag.PackageId = new SelectList(_db.Packages, "PackageId", "Description");
       return View(tagToAddToPackage);
     }
+
     [HttpPost]
     public ActionResult AddPackage(Tag tag, int packageId)
     {
@@ -47,10 +49,19 @@ namespace Parcels.Controllers
 #nullable disable
       if (joinEntity == null && packageId != 0)
       {
-        _db.PackageTags.Add(new PackageTag() { PackageId = packageId, TagId = tag.TagId });
+        _db.PackageTags.Add(new PackageTag() { TagId = tag.TagId, PackageId = packageId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = tag.TagId });
+    }
+
+    public ActionResult Details(int id)
+    {
+      Tag thisTag = _db.Tags
+                       .Include(tagToView => tagToView.JoinEntities)
+                       .ThenInclude(establishRelationship => establishRelationship.Package)
+                       .FirstOrDefault(tagToView => tagToView.TagId == id);
+      return View(thisTag);
     }
   }
 }

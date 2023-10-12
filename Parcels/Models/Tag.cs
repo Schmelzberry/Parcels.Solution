@@ -8,6 +8,6 @@ namespace Parcels.Models
   {
     public int TagId { get; set; }
     public string Description { get; set; }
-    public List <PackageTag> JoinEntities { get; }
+    public List<PackageTag> JoinEntities { get; }
   }
 }

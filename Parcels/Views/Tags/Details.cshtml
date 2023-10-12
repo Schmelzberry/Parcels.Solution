@@ -7,11 +7,11 @@
 
 <h2>Tag Details</h2>
 <hr />
-<h3></h3>
+<h3>@Model.Description</h3> 
 
 @if (@Model.JoinEntities.Count == 0)
 {
-  <h4>There are currently no tags.</h4>
+  <h4>There are currently no packages with this tag.</h4>
 }
 else
 {
@@ -25,6 +25,5 @@ else
 }
 
 
-
+<p>@Html.ActionLink("Add a Package", "AddPackage", new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Edit a Tag", "Edit", new { id = Model.TagId })</p>
-<p>@Html.ActionLink("Delete a Tag", "Delete", new { id = Model.TagId })</p>
