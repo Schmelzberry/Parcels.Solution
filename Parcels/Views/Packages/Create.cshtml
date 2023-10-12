@@ -30,8 +30,10 @@
   @Html.TextBoxFor(model => model.Width, new { placeholder="Enter Width" })
   @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
   <br />
-  
-  <input type="submit" value="Add Package"/>
+  <h4>@Html.LabelFor(model => model.Sender)</h4>
+  @Html.DropDownList("SenderId")
+  <br />
+  <input type="submit" value="Add Package" class="btn btn-primary" />
 }
 </div>
 <br />

@@ -23,19 +23,20 @@ namespace Parcels.Controllers
 
     public ActionResult Create()
     {
+      ViewBag.SenderId = new SelectList(_db.Senders, "SenderId", "Name");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Package entry) 
+    public ActionResult Create(Package entry)
     {
       if (!ModelState.IsValid)
       {
+        ViewBag.SenderId = new SelectList(_db.Senders, "SenderId", "Name");
         return View(entry);
       }
       else
       {
-        entry.Description = "This is a placeholder description.";
         entry.Weight = 10;
         entry.Height = 10;
         entry.Length = 20;
@@ -48,7 +49,9 @@ namespace Parcels.Controllers
 
     public ActionResult Details(int id)
     {
-      Package thisPackage = _db.Packages.FirstOrDefault(package => package.PackageId == id);
+      Package thisPackage = _db.Packages
+                               .Include(packageToView => packageToView.Sender)
+                               .FirstOrDefault(package => package.PackageId == id);
       return View(thisPackage);
     }
 
@@ -71,7 +74,7 @@ namespace Parcels.Controllers
       Package thisPackage = _db.Packages.FirstOrDefault(package => package.PackageId == id);
       return View(thisPackage);
     }
-    
+
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
