@@ -8,24 +8,24 @@
 
 <h1>Sender Details</h1>
 <hr/>
-<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
-<h4>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</h4>
-
+<h4><strong>@Html.DisplayNameFor(model => model.Name)</strong>: @Html.DisplayFor(model => model.Name)</h3>
+<h4><strong>@Html.DisplayNameFor(model => model.Address)</strong>: @Html.DisplayFor(model => model.Address)</h4>
+<hr/>
 @if(@Model.Packages.Count == 0)
 {
   <p>This sender does not have any registered packages.</p>
 }
 else
 {
-  <h4>This sender has the following packages:</h4>
+  <p>This sender has the following packages:</p>
   <ul>
     @foreach(Package entry in Model.Packages)
     {
-      <li>@entry.PackageId : @entry.Description</li>
+      <li>@Html.ActionLink($"{@entry.Description}", "Details", "Packages", new { id = entry.PackageId})</li>
     }
   </ul>
 }
-<p>@Html.ActionLink("Back to list of senders", "Index")</p>
+<hr/>
 <p>@Html.ActionLink("Edit sender details", "Edit", new { id = Model.SenderId})</p>
 <p>@Html.ActionLink("Delete sender", "Delete", new { id = Model.SenderId})</p>
 <p>@Html.ActionLink("Add new package", "Create", "Packages")</p>

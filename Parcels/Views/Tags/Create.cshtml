@@ -1,0 +1,28 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Add a Tag</h1>
+<p>Fill out the form below and hit submit.</p>
+<hr/>
+
+@model Parcels.Models.Tag
+<div class="container">
+  @using (Html.BeginForm())
+  {
+    <div class="row">
+      <div class="col-6">
+        <h4>@Html.LabelFor(model => model.Description)</h4>
+        @Html.TextBoxFor(model => model.Description, new { placeholder= "Enter Description" })
+        <br />
+      </div>
+    </div>
+    <br />
+    <input type="submit" value="Add Tag" class="btn btn-primary" />
+  }
+</div>
+<br />
+<hr/>
+<div class="container">
+  <p>@Html.ActionLink("Back to Tags", "Index")</p>
+</div>

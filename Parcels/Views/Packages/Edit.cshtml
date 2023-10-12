@@ -6,28 +6,34 @@
 
 <h4>Edit a package</h4>
 
-<p>Edit a package's details: @Html.DisplayFor(entry => entry.Description)</p>
+<p>Edit this package's details: @Html.DisplayFor(entry => entry.Description)</p>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(entry => entry.PackageId)
-  @Html.LabelFor(entry => entry.Description)
-  @Html.EditorFor(entry => entry.Description)
-  <br/>
-  @Html.LabelFor(entry => entry.Height)
-  @Html.EditorFor(entry => entry.Height)
-  <br/>  
-  @Html.LabelFor(entry => entry.Length)
-  @Html.EditorFor(entry => entry.Length)
-  <br/>
-  @Html.LabelFor(entry => entry.Weight)
-  @Html.EditorFor(entry => entry.Weight)
-  <br/>
-  @Html.LabelFor(entry => entry.Width)
-  @Html.EditorFor(entry => entry.Width)
-  <br/>
 
-  <input type="submit" value="Save" class="btn btn-primary" />
+  <div class="row">
+    <div class="col-6">
+      <h4>@Html.LabelFor(model => model.Sender)</h4>
+      @Html.DropDownList("SenderId")
+      <br />
+      <h4>@Html.LabelFor(entry => entry.Description)</h4>
+      @Html.EditorFor(entry => entry.Description)
+    </div>
+    <div class="col-6">
+      <h3>Dimensions:</h3>      
+      <h4>@Html.LabelFor(entry => entry.Height)</h4>
+      @Html.EditorFor(entry => entry.Height)
+      <h4>@Html.LabelFor(entry => entry.Length)</h4>
+      @Html.EditorFor(entry => entry.Length)
+      <h4>@Html.LabelFor(entry => entry.Weight)</h4>
+      @Html.EditorFor(entry => entry.Weight)
+      <h4>@Html.LabelFor(entry => entry.Width)</h4>
+      @Html.EditorFor(entry => entry.Width)
+      <br/>
+    </div>
+  </div>
+  <input type="submit" value="Save Changes" class="btn btn-primary" />
 }
   <p>@Html.ActionLink("Back to Packages", "Index")</p>
   

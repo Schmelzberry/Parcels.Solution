@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <h4>@Html.ActionLink("Home", "Index", "Home") | @Html.ActionLink("Sender List", "Index", "Senders") | @Html.ActionLink("All Packages", "Index", "Packages") | @Html.ActionLink("All Tags", "Index", "Tags")</h4>
+    <hr />
     <meta charset="utf-8">
     <title>Parcel Service</title>
     <link 
@@ -11,6 +13,8 @@
     <link rel="stylesheet" href="~/css/styles.css">
   </head>
   <body>
-    @RenderBody()
+    <div class="container">
+      @RenderBody()
+    </div>
   </body>
 </html>

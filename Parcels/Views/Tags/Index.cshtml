@@ -1,3 +1,24 @@
 @{
   Layout = "_Layout";
 }
+
+<h1>Tags</h1>
+<hr />
+
+@using Parcels.Models;
+
+@if(@Model.Count == 0)
+{
+  <p>There are no tags in the database with that name.</p>
+}
+else 
+{
+  <ul>
+  @foreach(Tag entry in Model)
+  {
+    <li>@Html.ActionLink($"{entry.Description}", "Details", new { id = entry.TagId })</li>
+  }
+  </ul>
+}
+<hr/>
+<p>@Html.ActionLink("Add a tag", "Create")</p>

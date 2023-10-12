@@ -8,10 +8,14 @@
 <hr/>
 @using(Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
-  @Html.LabelFor(model => model.Address)
-  @Html.TextBoxFor(model => model.Address)
+  <h4>@Html.LabelFor(model => model.Name) </h4>
+  @Html.TextBoxFor(model => model.Name, new { placeholder = "Name" })
+  <br />
+  <h4>@Html.LabelFor(model => model.Address)</h4>
+  @Html.TextBoxFor(model => model.Address, new { placeholder = "Address" })
+  <br />
+  <br/>
   <input type="submit" value="Register Sender"/>
 }
-<p>@Html.ActionLink("Show list of senders", "Index")</p>
+<hr/>
+<p>@Html.ActionLink("Back to list of senders", "Index")</p>

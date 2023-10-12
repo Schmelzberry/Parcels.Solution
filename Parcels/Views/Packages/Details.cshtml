@@ -1,15 +1,28 @@
 @{
   Layout = "_Layout";
 }
-
 @model Parcels.Models.Package;
+<h2>Package Details</h2>
+<hr/>
+<div class="row">
+  <div class="col-6">
+    <h4>Sender Details</h4>
+    <hr/>
+    <p><strong>@Html.DisplayNameFor(package => package.Sender.Name)</strong>: @Html.DisplayFor(package => package.Sender.Name)</p>
+    <p><strong>@Html.DisplayNameFor(package => package.Sender.Address)</strong>: @Html.DisplayFor(package => package.Sender.Address)</p>
+  </div>
+  <div class="col-6">
+    <h4>Package Details</h4>
+    <hr/>
+    <p><strong>@Html.DisplayNameFor(package => package.Description)</strong>: @Html.DisplayFor(package => package.Description)</p>
+    <p><strong>@Html.DisplayNameFor(package => package.Height)</strong>: @Html.DisplayFor(package => package.Height)</p>
+    <p><strong>@Html.DisplayNameFor(package => package.Length)</strong>: @Html.DisplayFor(package => package.Length)</p>
+    <p><strong>@Html.DisplayNameFor(package => package.Weight)</strong> : @Html.DisplayFor(package => package.Weight)</p>
+    <p><strong>@Html.DisplayNameFor(package => package.Width)</strong>: @Html.DisplayFor(package => package.Width)</p>
+  </div>
+</div>
 
-<p>@Html.DisplayNameFor(package => package.Description): @Html.DisplayFor(package => package.Description)</p>
-<p>@Html.DisplayNameFor(package => package.Height): @Html.DisplayFor(package => package.Height)</p>
-<p>@Html.DisplayNameFor(package => package.Length): @Html.DisplayFor(package => package.Length)</p>
-<p>@Html.DisplayNameFor(package => package.Weight) : @Html.DisplayFor(package => package.Weight)</p>
-<p>@Html.DisplayNameFor(package => package.Width): @Html.DisplayFor(package => package.Width)</p>
 
-<p>@Html.ActionLink("Bring me Home", "Index")</p>
+
 <p>@Html.ActionLink("Edit a Package", "Edit", new { id = Model.PackageId })</p>
 <p>@Html.ActionLink("Delete a Package", "Delete", new { id = Model.PackageId })</p>

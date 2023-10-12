@@ -4,15 +4,15 @@
 
 @using Parcels.Models;
 
-<h1>List of All Registered Senders</h1>
-
+<h1>List of Senders</h1>
+<hr/>
 <ul>
   @foreach (Sender entry in Model)
   {
     <li>@Html.ActionLink($"{entry.Name}", "Details", new { id = entry.SenderId })</li>
   }
 </ul>
-
+<hr/>
 <p>@Html.ActionLink("Add a new Sender", "Create")</p>
 <p>@Html.ActionLink("Add new Package", "Create", "Packages")</p>
 <p>@Html.ActionLink("Back Home", "Index", "Home")</p>

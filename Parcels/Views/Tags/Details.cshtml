@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Parcels.Models
+@model Parcels.Models.Tag
+
+<h2>Tag Details</h2>
+<hr />
+<h3></h3>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <h4>There are currently no tags.</h4>
+}
+else
+{
+  <h4>Packages the tag belongs to</h4>
+  <ul>
+  @foreach(PackageTag relationship in Model.JoinEntities)
+  {
+    <li>@relationship.Package.Description</li>
+  }
+  </ul>
+}
+
+
+
+<p>@Html.ActionLink("Edit a Tag", "Edit", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete a Tag", "Delete", new { id = Model.TagId })</p>

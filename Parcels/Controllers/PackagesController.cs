@@ -58,6 +58,7 @@ namespace Parcels.Controllers
     public ActionResult Edit(int id)
     {
       Package thisPackage = _db.Packages.FirstOrDefault(package => package.PackageId == id);
+      ViewBag.SenderId = new SelectList(_db.Senders, "SenderId", "Name");
       return View(thisPackage);
     }
 

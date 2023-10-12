@@ -10,33 +10,42 @@
 <div class="container">
 @using (Html.BeginForm())
 {
-  <h4>@Html.LabelFor(model => model.Description)</h4>
-  @Html.TextBoxFor(model => model.Description, new { placeholder="Enter Description" })
-  @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-  <br />
-  <h4>@Html.LabelFor(model => model.Height)</h4>
-  @Html.TextBoxFor(model => model.Height, new { placeholder="Enter Height" })
-  @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
-  <br />
-  <h4>@Html.LabelFor(model => model.Length)</h4>
-  @Html.TextBoxFor(model => model.Length, new { placeholder="Enter Length" })
-  @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
-  <br />
-  <h4>@Html.LabelFor(model => model.Weight)</h4>
-  @Html.TextBoxFor(model => model.Weight, new { placeholder="Enter Weight" })
-  @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
-  <br />
-  <h4>@Html.LabelFor(model => model.Width)</h4>
-  @Html.TextBoxFor(model => model.Width, new { placeholder="Enter Width" })
-  @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
-  <br />
-  <h4>@Html.LabelFor(model => model.Sender)</h4>
-  @Html.DropDownList("SenderId")
+  <div class="row">
+    <div class="col-6">
+      <h6>@Html.LabelFor(model => model.Sender)</h6>
+      @Html.DropDownList("SenderId")
+      <br />
+      <h6>@Html.LabelFor(model => model.Description)</h6>
+      @Html.TextBoxFor(model => model.Description, new { placeholder="Enter Description" })
+      @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+      <br />
+    </div>
+    <div class="col-6">
+      <h3>Dimensions:</h3>
+      <h6>@Html.LabelFor(model => model.Height)</h6>
+      @Html.TextBoxFor(model => model.Height, new { placeholder="Enter Height" })
+      @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+      <br />
+      <h6>@Html.LabelFor(model => model.Length)</h6>
+      @Html.TextBoxFor(model => model.Length, new { placeholder="Enter Length" })
+      @Html.ValidationMessageFor(model => model.Length, "", new { @class = "text-danger" })
+      <br />
+      <h6>@Html.LabelFor(model => model.Weight)</h6>
+      @Html.TextBoxFor(model => model.Weight, new { placeholder="Enter Weight" })
+      @Html.ValidationMessageFor(model => model.Weight, "", new { @class = "text-danger" })
+      <br />
+      <h6>@Html.LabelFor(model => model.Width)</h6>
+      @Html.TextBoxFor(model => model.Width, new { placeholder="Enter Width" })
+      @Html.ValidationMessageFor(model => model.Width, "", new { @class = "text-danger" })
+      <br />
+    </div>
+  </div>
   <br />
   <input type="submit" value="Add Package" class="btn btn-primary" />
 }
 </div>
 <br />
+<hr/>
 <div class="container">
   <p>@Html.ActionLink("Back to Packages", "Index")</p>
 </div>
