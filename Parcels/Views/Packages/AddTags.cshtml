@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Parcels.Models.Package
+
+<h2>Add a tag</h2>
+
+<h4>Add a tag to this package: @Html.DisplayFor(model => model.Description)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.PackageId)
+
+  @Html.Label("Select Tag")
+  @Html.DropDownList("TagId")
+
+  <input type="submit" value="Add Tag" />
+}
+<hr/>
+<p>@Html.ActionLink("Back to packages", "Index")</p>

@@ -2,10 +2,11 @@
   Layout = "_Layout";
 }
 @model Parcels.Models.Package;
+@using Parcels.Models;
 <h2>Package Details</h2>
 <hr/>
 <div class="row">
-  <div class="col-6">
+  <div class="col-4">
     <h4>Sender Details</h4>
     <hr/>
     <p><strong>@Html.DisplayNameFor(package => package.Sender.Name)</strong>: @Html.DisplayFor(package => package.Sender.Name)</p>
@@ -20,9 +21,16 @@
     <p><strong>@Html.DisplayNameFor(package => package.Weight)</strong> : @Html.DisplayFor(package => package.Weight)</p>
     <p><strong>@Html.DisplayNameFor(package => package.Width)</strong>: @Html.DisplayFor(package => package.Width)</p>
   </div>
+  <div class="col-2">
+    <h4>Tags</h4>
+    <hr/>
+    @foreach (PackageTag entry in Model.JoinEntities)
+    {
+      <li>@Html.ActionLink($"{entry.Tag.Description}", "Details", "Tags", new { id = entry.TagId})</li>
+    }
+  </div>
 </div>
-
-
-
+<hr/>
+<p>@Html.ActionLink("Add a Tag to this Package", "AddTags", new { id = Model.PackageId })</p>
 <p>@Html.ActionLink("Edit a Package", "Edit", new { id = Model.PackageId })</p>
 <p>@Html.ActionLink("Delete a Package", "Delete", new { id = Model.PackageId })</p>

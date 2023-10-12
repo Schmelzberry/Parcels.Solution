@@ -86,5 +86,26 @@ namespace Parcels.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddTags(int id)
+    {
+      Package targetPackage = _db.Packages.FirstOrDefault(entry => entry.PackageId == id);
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Description");
+      return View(targetPackage);
+    }
+
+    [HttpPost]
+    public ActionResult AddTags(Tag selectedTag, Package selectedPkg)
+    {
+      #nullable enable
+      PackageTag? joinEntity = _db.PackageTags.FirstOrDefault(join => (join.PackageId == selectedPkg.PackageId && join.TagId == selectedTag.TagId));
+      #nullable disable
+      if (joinEntity == null && selectedTag.TagId != 0)
+      {
+        _db.PackageTags.Add(new PackageTag() { TagId = selectedTag.TagId, PackageId = selectedPkg.PackageId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = selectedPkg.PackageId });
+    }
   }
 }

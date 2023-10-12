@@ -1,3 +1,24 @@
 @{
   Layout = "_Layout";
 }
+
+@model Parcels.Models.Tag
+
+<h4>Edit a tag<h4>
+
+<p>Edit this tag's details: @Html.DisplayFor(entry => entry.Description)</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(entry => entry.TagId)
+
+  <div class="row">
+    <div class="col-6">
+      <h4>@Html.LabelFor(entry => entry.Description)</h4>
+          @Html.EditorFor(entry=> entry.Description)
+      <br/>
+    </div>
+  </div>
+  <input type="submit" value="Save Changes" class="btn btn-primary" />
+}
+  <p>@Html.ActionLink("Back to Tags", "Index")</p>

@@ -54,7 +54,6 @@ namespace Parcels.Controllers
       }
       return RedirectToAction("Details", new { id = tag.TagId });
     }
-
     public ActionResult Details(int id)
     {
       Tag thisTag = _db.Tags
@@ -62,6 +61,32 @@ namespace Parcels.Controllers
                        .ThenInclude(establishRelationship => establishRelationship.Package)
                        .FirstOrDefault(tagToView => tagToView.TagId == id);
       return View(thisTag);
+    }
+    public ActionResult Edit(int id)
+    {
+      Tag tagToEdit = _db.Tags.FirstOrDefault(databaseTags => databaseTags.TagId == id);
+      return View(tagToEdit);
+    }
+    
+    [HttpPost]
+    public ActionResult Edit(Tag tag)
+    {
+      _db.Tags.Update(tag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+    public ActionResult Delete(int id)
+    {
+      Tag tagToDelete = _db.Tags.FirstOrDefault(databaseTags => databaseTags.TagId == id);
+      return View(tagToDelete);
+    }
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Tag tagToDelete = _db.Tags.FirstOrDefault(databaseTags => databaseTags.TagId == id);
+      _db.Tags.Remove(tagToDelete);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }
